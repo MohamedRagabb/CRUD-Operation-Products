@@ -14,3 +14,10 @@ body{
 h2 ,label{
     color: #fff;
 }
+#total{
+    color: #fff;
+    border:none
+}
+td{
+    text-align: center;
+}
