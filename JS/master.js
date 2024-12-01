@@ -148,7 +148,8 @@ function saveproduct(){
    
     productArray.push(NewProduct);
     localStorage.setItem("product" , JSON.stringify(productArray))
-    rest()
+    rest();
+    showtableproduct();
 }
 
 // rest 
@@ -160,6 +161,49 @@ function rest(){
     price.value='',
     discount.value='',
     total.value=''
+
+}
+
+
+//show table
+function showtableproduct(){
+    let Tablepro = '';
+    for(let x =0 ; x< productArray.length ; x++){
+        Tablepro +=`
+        <tr>
+                   <td>${x}</td>
+                   <td>${productArray[x].ddlcate}</td>
+                   <td>${productArray[x].product}</td>
+                   <td>${productArray[x].quantity}</td>
+                   <td>${productArray[x].price}</td>
+                   <td>${productArray[x].discount}</td>
+                   <td>${productArray[x].total}</td>
+                   <td>
+                       <button class="btn btn-info">
+                           <i class="fa-solid fa-pen-to-square"></i>
+                       </button>
+                       <button class="btn btn-danger ms-4" onclick=" delpro(${x})">
+                           <i class="fa-solid fa-trash-can"></i>
+                       </button>
+                   </td>
+               </tr>
+        `
+
+    }
+    document.getElementById('tableproo').innerHTML = Tablepro;
+
+}
+
+
+//delete
+
+function delpro(id){
+    if(confirm('Are You Sure From Deleting')==true){
+        productArray.splice(id,1);
+        localStorage.product =JSON.stringify(productArray);
+        showtableproduct();
+    }
+    
 
 }
 
@@ -178,6 +222,7 @@ $(document).ready(function(){
     ShowCateory();
     ShowTableCategory();
     countcate();
+    showtableproduct();
     $('#tablepro').DataTable();
 })
  
