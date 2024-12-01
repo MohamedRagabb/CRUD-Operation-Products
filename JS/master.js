@@ -9,7 +9,9 @@ let total = document.getElementById('total');
 
 // save categoary
 let categoryAry ;
+let productArray;
 localStorage.category != null? categoryAry= JSON.parse(localStorage.category) : categoryAry=[];
+localStorage.product != null? productArray= JSON.parse(localStorage.product) : productArray=[];
 
 function SaveCateogry(){
     let objectcate={
@@ -101,7 +103,65 @@ function validationcategory(){
 } 
 
 
+//get total 
+// دالة حساب المجموع الكلي
+function GetTotal() {
+    
+    let qty = parseFloat(quantity.value) || 0;
+    let prc = parseFloat(price.value) || 0;
+    let disc = parseFloat(discount.value) || 0;
 
+    
+    let totalValue = qty * prc - disc;
+
+   
+    total.value = totalValue >= 0 ? totalValue.toFixed(2) : 0; 
+}
+
+
+function validateInput(input) {
+    input.value = input.value < 0 ? 0 : input.value;
+}
+
+
+quantity.addEventListener('input', () => validateInput(quantity));
+price.addEventListener('input', () => validateInput(price));
+discount.addEventListener('input', () => validateInput(discount));
+
+
+quantity.addEventListener('input', GetTotal);
+price.addEventListener('input', GetTotal);
+discount.addEventListener('input', GetTotal);
+
+
+// save product
+function saveproduct(){
+    let NewProduct={
+        ddlcate : ddlcate.options[ddlcate.selectedIndex].text,
+        product : product.value,
+        quantity: quantity.value,
+        price : price.value,
+        discount : discount.value,
+        total : total.value
+
+    };
+   
+    productArray.push(NewProduct);
+    localStorage.setItem("product" , JSON.stringify(productArray))
+    rest()
+}
+
+// rest 
+
+function rest(){
+    ddlcate.options[ddlcate.selectedIndex].text="Select Category......",
+    product.value='',
+    quantity.value='',
+    price.value='',
+    discount.value='',
+    total.value=''
+
+}
 
 
 

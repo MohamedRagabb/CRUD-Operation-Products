@@ -53,26 +53,27 @@
            <input type="text" class="form-control" placeholder="Enter product name" id="product">
        </div>
        <div class="col-md-2 col-sm-12">
-           <label id="lbpro">Quantity :*</label>
-           <input type="number" class="form-control" value="0" id="quantity">
-       </div>
-       <div class="col-md-2 col-sm-12">
-           <label id="lbpro">Price :*</label>
-           <input type="number" class="form-control" id="price" value="0">
-       </div>
-       <div class="col-md-2 col-sm-12">
-           <label id="lbpro">Discount :*</label>
-           <input type="number" class="form-control" id="discount" value="0">
-       </div>
-       <div class="col-md-2 col-sm-12">
-           <label id="lbpro">Total</label>
-           <input type="number" class="form-control bg-danger text-center" id="total" value="0" readonly>
-       </div>
+        <label id="lbpro">Quantity :*</label>
+        <input type="number" class="form-control" id="quantity" min="0">
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <label id="lbpro">Price :*</label>
+        <input type="number" class="form-control" id="price" step="0.01" min="0">
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <label id="lbpro">Discount :*</label>
+        <input type="number" class="form-control" id="discount" min="0">
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <label id="lbpro">Total</label>
+        <input type="text" class="form-control bg-danger text-center" id="total" value="0" readonly>
+    </div>
+    
        <div class="text-center col-md-12 mt-3">
-           <button class="btn btn-dark w-25">
+           <button class="btn btn-dark w-25" onclick="rest()">
                <i class="fa-solid fa-trash-can-arrow-up fs-4"></i>
            </button>
-           <button class="btn btn-success w-25">
+           <button class="btn btn-success w-25" onclick="saveproduct()">
                <i class="fa-solid fa-circle-down fs-4"></i>
            </button>
        </div>
