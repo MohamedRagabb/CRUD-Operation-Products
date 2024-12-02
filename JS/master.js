@@ -10,6 +10,10 @@ let total = document.getElementById('total');
 // save categoary
 let categoryAry ;
 let productArray;
+let BtnStatus = "Create";
+let proID;
+
+
 localStorage.category != null? categoryAry= JSON.parse(localStorage.category) : categoryAry=[];
 localStorage.product != null? productArray= JSON.parse(localStorage.product) : productArray=[];
 
@@ -145,8 +149,15 @@ function saveproduct(){
         total : total.value
 
     };
+    if(BtnStatus==="Create"){
+        productArray.push(NewProduct);
+
+    }else{
+        productArray[proID]=NewProduct;
+        BtnStatus = "Create";
+    }
    
-    productArray.push(NewProduct);
+    
     localStorage.setItem("product" , JSON.stringify(productArray))
     rest();
     showtableproduct();
@@ -180,7 +191,7 @@ function showtableproduct(){
                    <td>${productArray[x].total}</td>
                    <td>
                        <button class="btn btn-info">
-                           <i class="fa-solid fa-pen-to-square"></i>
+                           <i class="fa-solid fa-pen-to-square" onclick="EditProduct(${x})"></i>
                        </button>
                        <button class="btn btn-danger ms-4" onclick=" delpro(${x})">
                            <i class="fa-solid fa-trash-can"></i>
@@ -204,6 +215,21 @@ function delpro(id){
         showtableproduct();
     }
     
+
+}
+
+//EditProduct
+function EditProduct(id){
+    ddlcate.options[ddlcate.selectedIndex].text= productArray[id].ddlcate;
+     product.value= productArray[id].product;
+     quantity.value=productArray[id].quantity;
+     price.value=productArray[id].price;
+     discount.value=productArray[id].discount;
+     total.value=productArray[id].total;
+
+     BtnStatus = "Edit";
+     proID= id;
+
 
 }
 
