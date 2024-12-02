@@ -161,6 +161,7 @@ function saveproduct(){
     localStorage.setItem("product" , JSON.stringify(productArray))
     rest();
     showtableproduct();
+    countproduct();
 }
 
 // rest 
@@ -213,6 +214,7 @@ function delpro(id){
         productArray.splice(id,1);
         localStorage.product =JSON.stringify(productArray);
         showtableproduct();
+        countproduct();
     }
     
 
@@ -233,7 +235,11 @@ function EditProduct(id){
 
 }
 
+//countproduct
 
+function countproduct(){
+    document.getElementById('countpro').innerHTML = `Total Products(${productArray.length})`
+}
 
 
 
@@ -249,6 +255,7 @@ $(document).ready(function(){
     ShowTableCategory();
     countcate();
     showtableproduct();
+    countproduct();
     $('#tablepro').DataTable();
 })
  
