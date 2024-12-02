@@ -241,6 +241,81 @@ function countproduct(){
     document.getElementById('countpro').innerHTML = `Total Products(${productArray.length})`
 }
 
+// validation 
+
+function validationsystem(){
+    let lbcate = document.getElementById('lbcate');
+    let lbpro = document.getElementById('lbpro');
+    let lbquantitiy = document.getElementById('lbquantitiy');
+    let lbprice = document.getElementById('lbprice');
+    let valid=true;
+
+
+    if(ddlcate.options[ddlcate.selectedIndex].text=='Select Category......'){
+        lbcate.innerHTML='Category Name :* [Required]';
+        lbcate.style.color='red';
+        valid=false;
+
+    }else{
+        lbcate.innerHTML='Category Name :*';
+        lbcate.style.color='white';
+        valid=true
+    }
+
+
+
+
+    if(product.value==''){
+        lbpro.innerHTML= 'Product Name :* [Required]'
+        lbpro.style.color='red';
+        valid=false;
+
+    }else{
+        lbpro.innerHTML='Product Name :*';
+        lbpro.style.color='white';
+        valid=true
+    }
+
+
+
+    if(quantity.value==0){
+        lbquantitiy.innerHTML= 'Quantity :* [Required]'
+        lbquantitiy.style.color='red';
+        valid=false;
+
+    }else{
+        lbquantitiy.innerHTML='Quantity :*';
+        lbquantitiy.style.color='white';
+        valid=true
+    }
+
+
+
+    if(price.value==0){
+        lbprice.innerHTML= 'Price :* [Required]'
+        lbprice.style.color='red';
+        valid=false;
+
+    }else{
+        lbprice.innerHTML='Price :*';
+        lbprice.style.color='white';
+        valid=true
+         
+    }
+
+
+
+    if( ddlcate.options[ddlcate.selectedIndex].text!='' && product.value!='' &&
+         quantity.value!=0 && price.value!=0){
+            saveproduct();
+         }
+
+
+
+
+  return valid;
+}
+
 
 
 

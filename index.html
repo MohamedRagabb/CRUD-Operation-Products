@@ -53,19 +53,19 @@
            <input type="text" class="form-control" placeholder="Enter product name" id="product">
        </div>
        <div class="col-md-2 col-sm-12">
-        <label id="lbpro">Quantity :*</label>
+        <label id="lbquantitiy">Quantity :*</label>
         <input type="number" class="form-control" id="quantity" min="0">
     </div>
     <div class="col-md-2 col-sm-12">
-        <label id="lbpro">Price :*</label>
+        <label id="lbprice">Price :*</label>
         <input type="number" class="form-control" id="price" step="0.01" min="0">
     </div>
     <div class="col-md-2 col-sm-12">
-        <label id="lbpro">Discount :*</label>
+        <label >Discount :*</label>
         <input type="number" class="form-control" id="discount" min="0">
     </div>
     <div class="col-md-2 col-sm-12">
-        <label id="lbpro">Total</label>
+        <label>Total</label>
         <input type="text" class="form-control bg-danger text-center" id="total" value="0" readonly>
     </div>
     
@@ -73,7 +73,7 @@
            <button class="btn btn-dark w-25" onclick="rest()">
                <i class="fa-solid fa-trash-can-arrow-up fs-4"></i>
            </button>
-           <button class="btn btn-success w-25" onclick="saveproduct()">
+           <button class="btn btn-success w-25" onclick="return validationsystem()">
                <i class="fa-solid fa-circle-down fs-4"></i>
            </button>
        </div>
